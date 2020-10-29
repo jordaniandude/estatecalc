@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Generic - Forty by HTML5 UP</title>
+		<title>Mortgage Calculator</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -18,44 +18,90 @@
 			<div id="wrapper">
 
 				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo"><strong>Forty</strong> <span>by HTML5 UP</span></a>
-						<nav>
-							<a href="#menu">Menu</a>
-						</nav>
+				<!-- Note: The "styleN" class below should match that of the banner element. -->
+					<header id="header" class="alt style2">
+						<a href="index.html" class="logo"><strong>eState Calc</strong> <span>by Jordanian Dude</span></a>
 					</header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="mortgage.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions stacked">
-							<li><a href="#" class="button primary fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+				<!-- Banner -->
+				<!-- Note: The "styleN" class below should match that of the header element. -->
+					<section id="banner" class="style2">
+						<div class="inner">
+							<span class="image">
+								<img src="images/pic07.jpg" alt="" />
+							</span>
+							<header class="major">
+								<h1>Mortgage Calculator</h1>
+							</header>
+							<div class="content">
+								<p>Take a look on how your monthly payments would look like</p>
+							</div>
+						</div>
+					</section>
 
 				<!-- Main -->
-					<div id="main" class="alt">
+					<div id="main">
 
 						<!-- One -->
 							<section id="one">
 								<div class="inner">
 									<header class="major">
-										<h1>Generic</h1>
+										<h2>Calculate Monthly Payment</h2>
 									</header>
-									<span class="image main"><img src="images/pic11.jpg" alt="" /></span>
-									<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit.</p>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
-									<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
+									<form>
+										<div class="fields">
+											<div class="field half">
+												<label for="loan_amount">Loan Amount $</label>
+												<input type="text" required="" name="loan_amount" id="loan_amount" />
+											</div>
+											<div class="field half">
+												<label for="loan_period">Loan Period (Years)</label>
+												<input type="text" name="loan_period" id="loan_period" />
+											</div>
+										</div>
+										<div class="fields">
+											<div class="field third">
+												<label for="interest_rate">Interest Rate %</label>
+												<input type="text" name="interest_rate" id="interest_rate" />
+											</div>
+											<div class="field third">
+												<label for="annual_taxes">Annual Taxes $</label>
+												<input type="text" name="annual_taxes" id="annual_taxes" />
+											</div>
+											<div class="field third">
+												<label for="annual_insurance">Annual Insurance $</label>
+												<input type="text" name="annual_insurance" id="annual_insurance" />
+											</div>
+										</div>
+										<button type="button" class="primary" onclick="calcMortgage()">Calculate Monthly Payment</button>
+										<p id="results"></p>
+									</form>
 								</div>
 							</section>
 
-					</div>
+						<script>
+							function calcMortgage() {
+								var loan_amount = document.getElementById("loan_amount").value;
+								var loan_period = document.getElementById("loan_period").value;
+								var interest_rate = document.getElementById("interest_rate").value / 100;
+								var annual_taxes = document.getElementById("annual_taxes").value;
+								var annual_insurance = document.getElementById("annual_insurance").value;
+
+								var num_of_payments = loan_period * 12;
+								var periodic_interest_rate = interest_rate / 12;
+								var discount_factor = (Math.pow(1+periodic_interest_rate,num_of_payments) -1)/(periodic_interest_rate*Math.pow(1+periodic_interest_rate,num_of_payments));
+								var mortgage_payment = loan_amount / discount_factor;
+								var monthly_tax_payment = annual_taxes/12;
+								var monthly_insurance_payment = annual_insurance/12;
+								var total_monthly_payment = mortgage_payment+monthly_tax_payment+monthly_insurance_payment;
+
+								mortgage_payment = mortgage_payment.toFixed(2);
+								monthly_tax_payment = monthly_tax_payment.toFixed(2);
+								monthly_insurance_payment = monthly_insurance_payment.toFixed(2);
+								total_monthly_payment = total_monthly_payment.toFixed(2);
+								document.getElementById("results").innerHTML = "</br></br>Mortgage Payment: $" + mortgage_payment+"</br>Monthly Tax Payment: $"+monthly_tax_payment+"</br>Monthly Insurance Payment: $"+monthly_insurance_payment+"</br><strong>Total Monthly Payment: $"+total_monthly_payment+"</strong>";
+							}
+						</script>
 
 				<!-- Contact -->
 					<section id="contact">

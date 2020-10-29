@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Real Estate Calculator</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/multi-step.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo"><strong>eState Calc</strong> <span>by Jordanian Dude</span></a>
+					</header>
+
+				<!-- Main -->
+					<div id="main" class="alt">
+
+						<script type="text/javascript">
+							function showMe (box) {
+
+								var chbox = document.getElementById("cash-purchase");
+								var vis = "block";
+								if(chbox.checked){
+									vis = "none";
+								}
+								document.getElementById(box).style.display = vis;
+
+
+							}
+						</script>
+
+						<!-- One -->
+							<section id="one">
+								<div class="inner">
+									<header class="major">
+										<h1>Rental Property Analysis</h1>
+									</header>
+									<form id="regForm" action="">
+
+										<!-- Circles which indicates the steps of the form: -->
+										<div style="text-align:center;margin-top:0px;">
+											<span class="step"></span>
+											<span class="step"></span>
+											<span class="step"></span>
+											<span class="step"></span>
+										</div>
+
+										<!-- One "tab" for each step in the form: -->
+										<div class="tab">
+												<div>
+													<label for="report_title">Report Title:</label>
+													<p><input id="report_title" oninput="this.className = ''"></p>
+												</div>
+												<div>
+													<label for="property_address">Property Address</label>
+													<p><input id="property_address" oninput="this.className = ''"></p>
+												</div>
+												<div>
+													<label for="annual_property_taxes">Annual Property Taxes</label>
+													<p><input id="annual_property_taxes" oninput="this.className = ''"></p>
+												</div>
+												<div>
+													<label for="property_description">Property Description</label>
+													<p><textarea id="property_description" oninput="this.className = ''"></textarea></p>
+												</div>
+										</div>
+
+										<div class="tab">
+											<div>
+												<label for="purchase_price">Purchase Price:</label>
+												<p><input id="purchase_price" oninput="this.className = ''"></p>
+											</div>
+											<div>
+												<label for="after_repair_value">After Repair Value</label>
+												<p><input id="after_repair_value" oninput="this.className = ''"></p>
+											</div>
+											<div>
+												<label for="purchase_closing_cost">Purchase Closing Cost</label>
+												<p><input id="purchase_closing_cost" oninput="this.className = ''"></p>
+											</div>
+											<div>
+												<label for="estimated_repair_cost">Estimated Repair Cost</label>
+												<p><input id="estimated_repair_cost" oninput="this.className = ''"></p>
+											</div>
+											<div class="col-6 col-12-small">
+												<input type="checkbox" onclick="showMe('not-cash-purchase')" id="cash-purchase" name="cash-purchase">
+												<label for="cash-purchase">Cash Purchase?</label>
+											</div>
+											<div id="not-cash-purchase">
+												<div>
+													<label for="down_payment_of_purchase_price">Down payment of purchase price</label>
+													<p><input id="down_payment_of_purchase_price" oninput="this.className = ''"></p>
+												</div>
+												<div>
+													<label for="loan_interest_rate">Loan Interest Rate (%)</label>
+													<p><input id="loan_interest_rate" oninput="this.className = ''"></p>
+												</div>
+												<div>
+													<label for="points_charged_by_lender">Points charged by lender</label>
+													<p><input id="points_charged_by_lender" oninput="this.className = ''"></p>
+												</div>
+												<div>
+													<label for="other_charges_from_lender">Other Charges From the Lender</label>
+													<p><input id="other_charges_from_lender" oninput="this.className = ''"></p>
+												</div>
+											</div>
+											<div>
+												<label for="typical_cap_rate">Typical Cap Rate for Your Area (%)</label>
+												<p><input id="typical_cap_rate" oninput="this.className = ''"></p>
+											</div>
+										</div>
+
+										<div class="tab">Birthday:
+											<p><input placeholder="dd" oninput="this.className = ''"></p>
+											<p><input placeholder="mm" oninput="this.className = ''"></p>
+											<p><input placeholder="yyyy" oninput="this.className = ''"></p>
+										</div>
+
+										<div class="tab">Login Info:
+											<p><input placeholder="Username..." oninput="this.className = ''"></p>
+											<p><input placeholder="Password..." oninput="this.className = ''"></p>
+										</div>
+
+										<div style="overflow:auto;">
+											<div style="float:right;">
+												<button type="button" class="primary" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+												<button type="button" id="nextBtn" class="primary" onclick="nextPrev(1)">Next</button>
+											</div>
+										</div>
+
+
+									</form>
+								</div>
+							</section>
+
+					</div>
+
+				<!-- Contact -->
+					<section id="contact">
+						<div class="inner">
+							<section>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<label for="name">Name</label>
+											<input type="text" name="name" id="name" />
+										</div>
+										<div class="field half">
+											<label for="email">Email</label>
+											<input type="text" name="email" id="email" />
+										</div>
+										<div class="field">
+											<label for="message">Message</label>
+											<textarea name="message" id="message" rows="6"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send Message" class="primary" /></li>
+										<li><input type="reset" value="Clear" /></li>
+									</ul>
+								</form>
+							</section>
+							<section class="split">
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-envelope"></span>
+										<h3>Email</h3>
+										<a href="#">information@untitled.tld</a>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-phone"></span>
+										<h3>Phone</h3>
+										<span>(000) 000-0000 x12387</span>
+									</div>
+								</section>
+								<section>
+									<div class="contact-method">
+										<span class="icon solid alt fa-home"></span>
+										<h3>Address</h3>
+										<span>1234 Somewhere Road #5432<br />
+										Nashville, TN 00000<br />
+										United States of America</span>
+									</div>
+								</section>
+							</section>
+						</div>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<ul class="icons">
+								<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+								<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+								<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								<li><a href="#" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+		<script src="assets/js/multi-step.js"></script>
+
+	</body>
+</html>
